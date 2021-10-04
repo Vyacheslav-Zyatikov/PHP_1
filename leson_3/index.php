@@ -5,7 +5,7 @@
 echo "Задание 1 <br><br>";
 $number = 0;
 while ($number <= 100) {
-    if ($number % 3 === 0 && $number !== 0) {
+    if ($number % 3 === 0) {
         echo $number . "<br>";
     }
     $number++;
@@ -26,13 +26,13 @@ $number = 0;
 do {
     if ($number === 0) {
         echo $number . ' – это ноль.' . '<br>';
-    } elseif ($number % 2 !== 0) {
+    } elseif ($number & 1) {
         echo $number . ' – нечетное число.' . '<br>';
     } else {
         echo $number . ' – четное число.' . '<br>';
     }
     $number++;
-} while ($number < 11);
+} while ($number <= 10);
 
 echo '<hr>';
 /*
@@ -169,6 +169,7 @@ function menuRender($arr)
         if (is_array($value)) {
             $renderArr[] = '<li>' . $key . menuRender($value) . '</li>';
         } else {
+            $renderArr[] = "<a href=\"{$href}\">{$title}</a>";
             $renderArr[] = '<li>' . $value . '</li>';
         }
     }
@@ -187,7 +188,7 @@ for (…){ // здесь пусто}
 */
 echo "<br> Задание 7 <br><br>";
 
-for ($i = 0; $i < 10; print $i++ . ' ') {
+for ($i = 0; $i <= 9; print $i++ . ' ') {
 };
 
 echo '<hr>';
@@ -212,13 +213,13 @@ function filterDisplayCity($arr, $filterKey)
         foreach ($value as $i => $city) {
             $arrLength = count($value);
             $explodeArr = preg_split('//u', $city, 0, PREG_SPLIT_NO_EMPTY);
-            if (($explodeArr['0'] !== $filterKey) && ($echoCount == 0) && ($i === $arrLength - 1) && !empty($filterKey)) {
+            if (($explodeArr[0] !== $filterKey) && ($echoCount == 0) && ($i === $arrLength - 1) && !empty($filterKey)) {
                 echo "В этой области городов согласно фильтру '{$filterKey}' нет.";
             } elseif (($i == $arrLength - 1) && ($echoCount !== 0) && ($explodeArr['0'] == $filterKey)) {
                 echo ", {$city}.";
             } elseif (($i == $arrLength - 1) && ($echoCount !== 0)) {
                 echo ".";
-            }elseif (($explodeArr['0'] !== $filterKey) && !empty($filterKey)) {
+            }elseif (($explodeArr[0] !== $filterKey) && !empty($filterKey)) {
                 continue;
             }  else {
                 if (($echoCount == 0) && ($i === $arrLength - 1)) {

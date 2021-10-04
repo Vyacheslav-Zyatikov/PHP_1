@@ -1,0 +1,14 @@
+body {
+    background-color: aqua;
+}
+
+ul {
+    list-style-type: none;
+
+}
+
+li {
+    margin-bottom: 30px;
+    display: inline;
+    padding: 0 5px;
+}
